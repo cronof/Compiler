@@ -296,7 +296,7 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    2,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    4,    1,    4,    1,    1,    5,    5,    5,
+        1,    4,    4,    1,    4,    1,    4,    5,    5,    5,
         5,    5,    5,    5,    5,    5,    5,    1,    4,    1,
         4,    1,    1,    1,    6,    6,    6,    6,    6,    6,
         6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
@@ -645,7 +645,7 @@ printf("unexpected character\n");
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 14 "lexer.l"
+#line 16 "lexer.l"
 ECHO;
 	YY_BREAK
 #line 652 "lex.yy.c"
@@ -1534,7 +1534,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 14 "lexer.l"
+#line 16 "lexer.l"
 
 
 int yywrap(void)

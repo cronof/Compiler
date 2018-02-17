@@ -8,14 +8,14 @@ void updateSymbolVal(char symbol, int val);
 %}
 
 %union {int num; char id;}         /* Bison definitions */
-%start line
+
 %token print
 %token exit_command
 %token <num> number
 %token <id> identifier
 %type <num> line exp term
 %type <id> assignment
-
+%start line
 %%
 
 /* descriptions of expected inputs     corresponding actions (in C) */
@@ -35,6 +35,8 @@ assignment
 exp    	: term                  {$$ = $1;}
        	| exp '+' term          {$$ = $1 + $3;}
        	| exp '-' term          {$$ = $1 - $3;}
+				| exp '*' term          {$$ = $1 * $3;}
+				| exp '/' term          {$$ = $1 / $3;}
        	;
 
 term   	: number                {$$ = $1;}

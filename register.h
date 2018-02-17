@@ -8,7 +8,6 @@
 #define BRAL 1010
 #define BRALZ 1011
 #define CALL 1100
-#define HALT 1101
-#define IN 1110
+#define HALT 1110
+#define IN 1101
 #define OUT 1111
-char OPCODE, RA, RB, RD;

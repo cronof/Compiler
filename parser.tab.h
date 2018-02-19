@@ -39,10 +39,23 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     print = 258,
-     exit_command = 259,
-     number = 260,
-     identifier = 261
+     LOAD_IST = 258,
+     ADD_IST = 259,
+     SUB_IST = 260,
+     OR_IST = 261,
+     XOR_IST = 262,
+     BRA_IST = 263,
+     BRAZ_IST = 264,
+     BRAL_IST = 265,
+     BRALZ_IST = 266,
+     CALL_IST = 267,
+     HALT_IST = 268,
+     IN_IST = 269,
+     OUT_IST = 270,
+     print = 271,
+     exit_command = 272,
+     number = 273,
+     identifier = 274
    };
 #endif
 
@@ -53,12 +66,12 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 10 "parser.y"
+#line 11 "parser.y"
 int num; char id;
 
 
 /* Line 1676 of yacc.c  */
-#line 62 "parser.tab.h"
+#line 75 "parser.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

@@ -1,7 +1,8 @@
 %{
 void yyerror (char *s);
-#include <stdio.h>     /* C declarations used in actions */
+#include <stdio.h>
 #include <stdlib.h>
+#include "istToken.h"
 int symbols[52];
 int symbolVal(char symbol);
 void updateSymbolVal(char symbol, int val);
@@ -9,43 +10,41 @@ void updateSymbolVal(char symbol, int val);
 
 %union {int num; char id;}         /* Bison definitions */
 
-//%token LOAD_IST, ADD_IST, SUB_IST, OR_IST, XOR_IST, BRA_IST, BRAZ_IST, BRAL_IST, BRALZ_IST, CALL_IST, HALT_IST, IN_IST, OUT_IST
+%token LOAD_IST ADD_IST SUB_IST OR_IST XOR_IST BRA_IST BRAZ_IST BRAL_IST BRALZ_IST CALL_IST HALT_IST IN_IST OUT_IST
 %token print
 %token exit_command
 %token <num> number
 %token <id> identifier
 %type <num> line exp term
 %type <id> assignment
-%start line
+%start program
+
 %%
+program: statements {  }
+       ;
 
-/* descriptions of expected inputs     corresponding actions (in C) */
+statements: 
+          ;
 
-line    : assignment ';'				{;}
-				| exit_command ';'			{exit(EXIT_SUCCESS);}
-				| print exp ';'					{printf("Printing %d\n", $2);}
-				| line assignment ';'		{;}
-				| line print exp ';'		{printf("Printing %d\n", $3);}
-				| line exit_command ';'	{exit(EXIT_SUCCESS);}
-        ;
+loop: '[' statements ']' { $$ = new Loop(*$2); }
+    ;
 
-assignment
-				: identifier '=' exp  	{ updateSymbolVal($1,$3); }
-				;
-
-exp    	: term                  {$$ = $1;}
-       	| exp '+' term          {$$ = $1 + $3;}
-       	| exp '-' term          {$$ = $1 - $3;}
-				| exp '*' term          {$$ = $1 * $3;}
-				| exp '/' term          {$$ = $1 / $3;}
-
-       	;
-
-term   	: number                {$$ = $1;}
-				| identifier			{$$ = symbolVal($1);}
-        ;
-
-%%                     /* C code */
+statement: LOAD_IST		{ }
+				| ADD_IST			{ }
+				| SUB_IST			{ }
+				| OR_IST			{ }
+				| XOR_IST			{ }
+				| BRA_IST			{ }
+				| BRAZ_IST		{ }
+				| BRAL_IST		{ }
+				| BRALZ_IST		{ }
+				| CALL_IST		{ }
+				| HALT_IST		{ }
+				| IN_IST			{ }
+				| OUT_IST			{ }
+				| loop				{ }
+         ;
+%%                    /* C code */
 
 int computeSymbolIndex(char token)
 {

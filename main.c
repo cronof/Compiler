@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "register.h"
 #include "parser.tab.h"
-extern int yylex();
+extern int yyparse();
 extern int yylineno;
 extern char* yytext;
 
@@ -12,14 +12,14 @@ int main(void)
 
 	int ntoken, vtoken;
 
-	ntoken = yylex();
+	ntoken = yyparse();
 	while(ntoken) {
 		printf("%d\n", ntoken);
-		if(yylex() == NULL) {
+		if(yyparse() == NULL) {
 			printf("Empty !!!!!!!!!!\n");
 			return 1;
 		}
-		vtoken = yylex();
+		vtoken = yyparse();
 		switch (ntoken) {
 			case LOAD_IST:
 

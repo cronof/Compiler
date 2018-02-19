@@ -397,7 +397,7 @@ char *yytext;
 #line 1 "lexer.l"
 #define INITIAL 0
 #line 2 "lexer.l"
-	#include "istToken.h"
+	#include "instructions.h"
 	#include "parser.tab.h"
 #line 403 "lex.yy.c"
 

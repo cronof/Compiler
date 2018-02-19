@@ -9,7 +9,7 @@ void updateSymbolVal(char symbol, int val);
 
 %union {int num; char id;}         /* Bison definitions */
 
-%token LOAD_IST, ADD_IST, SUB_IST, OR_IST, XOR_IST, BRA_IST, BRAZ_IST, BRAL_IST, BRALZ_IST, CALL_IST, HALT_IST, IN_IST, OUT_IST
+//%token LOAD_IST, ADD_IST, SUB_IST, OR_IST, XOR_IST, BRA_IST, BRAZ_IST, BRAL_IST, BRALZ_IST, CALL_IST, HALT_IST, IN_IST, OUT_IST
 %token print
 %token exit_command
 %token <num> number

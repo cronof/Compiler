@@ -425,8 +425,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    23,    23,    24,    25,    26,    27,    28,    32,    35,
-      36,    37,    38,    39,    42,    43
+       0,    24,    24,    25,    26,    27,    28,    29,    33,    36,
+      37,    38,    39,    40,    43,    44
 };
 #endif
 
@@ -1341,98 +1341,98 @@ yyreduce:
         case 2:
 
 /* Line 1455 of yacc.c  */
-#line 23 "parser.y"
+#line 24 "parser.y"
     {;;}
     break;
 
   case 3:
 
 /* Line 1455 of yacc.c  */
-#line 24 "parser.y"
+#line 25 "parser.y"
     {exit(EXIT_SUCCESS);;}
     break;
 
   case 4:
 
 /* Line 1455 of yacc.c  */
-#line 25 "parser.y"
+#line 26 "parser.y"
     {printf("Printing %d\n", (yyvsp[(2) - (3)].num));;}
     break;
 
   case 5:
 
 /* Line 1455 of yacc.c  */
-#line 26 "parser.y"
+#line 27 "parser.y"
     {;;}
     break;
 
   case 6:
 
 /* Line 1455 of yacc.c  */
-#line 27 "parser.y"
+#line 28 "parser.y"
     {printf("Printing %d\n", (yyvsp[(3) - (4)].num));;}
     break;
 
   case 7:
 
 /* Line 1455 of yacc.c  */
-#line 28 "parser.y"
+#line 29 "parser.y"
     {exit(EXIT_SUCCESS);;}
     break;
 
   case 8:
 
 /* Line 1455 of yacc.c  */
-#line 32 "parser.y"
+#line 33 "parser.y"
     { updateSymbolVal((yyvsp[(1) - (3)].id),(yyvsp[(3) - (3)].num)); ;}
     break;
 
   case 9:
 
 /* Line 1455 of yacc.c  */
-#line 35 "parser.y"
+#line 36 "parser.y"
     {(yyval.num) = (yyvsp[(1) - (1)].num);;}
     break;
 
   case 10:
 
 /* Line 1455 of yacc.c  */
-#line 36 "parser.y"
+#line 37 "parser.y"
     {(yyval.num) = (yyvsp[(1) - (3)].num) + (yyvsp[(3) - (3)].num);;}
     break;
 
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 37 "parser.y"
+#line 38 "parser.y"
     {(yyval.num) = (yyvsp[(1) - (3)].num) - (yyvsp[(3) - (3)].num);;}
     break;
 
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 38 "parser.y"
+#line 39 "parser.y"
     {(yyval.num) = (yyvsp[(1) - (3)].num) * (yyvsp[(3) - (3)].num);;}
     break;
 
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 39 "parser.y"
+#line 40 "parser.y"
     {(yyval.num) = (yyvsp[(1) - (3)].num) / (yyvsp[(3) - (3)].num);;}
     break;
 
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 42 "parser.y"
+#line 43 "parser.y"
     {(yyval.num) = (yyvsp[(1) - (1)].num);;}
     break;
 
   case 15:
 
 /* Line 1455 of yacc.c  */
-#line 43 "parser.y"
+#line 44 "parser.y"
     {(yyval.num) = symbolVal((yyvsp[(1) - (1)].id));;}
     break;
 
@@ -1651,7 +1651,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 46 "parser.y"
+#line 47 "parser.y"
                      /* C code */
 
 int computeSymbolIndex(char token)

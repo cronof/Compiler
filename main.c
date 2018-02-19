@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "istToken.h"
+#include "instructions.h"
 #include "parser.tab.h"
 extern int yyparse();
 extern int yylineno;

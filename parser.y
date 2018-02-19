@@ -2,7 +2,7 @@
 void yyerror (char *s);
 #include <stdio.h>
 #include <stdlib.h>
-#include "istToken.h"
+#include "instructions.h"
 
 
 int symbols[52];

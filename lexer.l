@@ -1,5 +1,5 @@
 %{
-	#include "istToken.h"
+	#include "instructions.h"
 	#include "parser.tab.h"
 %}
 

@@ -3,12 +3,14 @@ void yyerror (char *s);
 #include <stdio.h>
 #include <stdlib.h>
 #include "istToken.h"
+
+
 int symbols[52];
 int symbolVal(char symbol);
 void updateSymbolVal(char symbol, int val);
 %}
 
-%union {int num; char id;}         /* Bison definitions */
+%union {int num; char id;}
 
 %token LOAD_IST ADD_IST SUB_IST OR_IST XOR_IST BRA_IST BRAZ_IST BRAL_IST BRALZ_IST CALL_IST HALT_IST IN_IST OUT_IST
 %token print
@@ -23,7 +25,7 @@ void updateSymbolVal(char symbol, int val);
 program: statements {  }
        ;
 
-statements: 
+statements:
           ;
 
 loop: '[' statements ']' { $$ = new Loop(*$2); }

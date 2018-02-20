@@ -1,5 +1,5 @@
 %{
-	#include "instructions.h"
+	#include "regAll.h"
 	#include "parser.tab.h"
 %}
 

@@ -2,7 +2,7 @@
 void yyerror (char *s);
 #include <stdio.h>
 #include <stdlib.h>
-#include "instructions.h"
+#include "regAll.h"
 
 
 int symbols[52];
@@ -24,7 +24,7 @@ void updateSymbolVal(char symbol, int val);
 %%
 program: statements {  }
        ;
- 
+
 statements:
           ;
 

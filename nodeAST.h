@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "regAll.h"
 char Node (void){
 
 }

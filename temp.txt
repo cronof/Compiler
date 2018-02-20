@@ -1,14 +1,4 @@
-"="          	{ return('='); }
-"+"          	{ return('+'); }
-"-"           { return('-'); }
-">"           { return('>'); }
-"<"           { return('<'); }
-"."           { return('.'); }
-","           { return(','); }
-"["           { return('['); }
-"]"           { return(']'); }
-"("           { return('('); }
-")"           { return(')'); }
+
 "LOAD"        { return "LOAD_IST"; }
 "ADD"         { return "ADD_IST"; }
 "SUB"         { return "SUB_IST"; }

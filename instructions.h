@@ -11,3 +11,4 @@
 #define HALT_IST 1110
 #define IN_IST 1101
 #define OUT_IST 1111
+ 

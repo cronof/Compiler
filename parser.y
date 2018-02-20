@@ -24,7 +24,7 @@ void updateSymbolVal(char symbol, int val);
 %%
 program: statements {  }
        ;
-
+ 
 statements:
           ;
 

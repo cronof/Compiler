@@ -4,13 +4,6 @@
 %}
 
 %%
-"print"						{return print;}
-"exit"						{return exit_command;}
-[a-zA-Z]			   	{yylval.id = yytext[0]; return identifier;}
-[0-9]+            {yylval.num = atoi(yytext); return number;}
-[ \t\n]           ;
-[-+*/=;]          {return yytext[0];}
-.                 printf("unexpected character\n");
 
 "LOAD"        { return '0001' }
 "ADD"         { return '0100' }
@@ -25,7 +18,7 @@
 "HALT"        { return '1110' }
 "IN"          { return '1101' }
 "OUT"         { return '1111' }
-
+.              printf("unexpected character\n");
 %%
 
 int yywrap(void)

@@ -28,19 +28,19 @@ program: statements {  }
 statements:
           ;
 
-statement:  LOAD_IST    { $$ = new f_Load($$); }
-          | ADD_IST     { $$ = new f_Add($2, $3); }
-          | SUB_IST     { $$ = new f_Sub($2, $3); }
-          | OR_IST      { $$ = new f_Or($2, $3); }
-          | XOR_IST     { $$ = new f_Xor($2, $3); }
-          | BRA_IST     { $$ = new f_Bra($2, $3); }
-          | BRAZ_IST    { $$ = new f_Braz($2, $3); }
-          | BRAL_IST    { $$ = new f_Bral($3); }
-          | BRALZ_IST   { $$ = new f_Bralz($2, $3); }
-          | CALL_IST    { $$ = new f_Call(); }
-          | HALT_IST    { $$ = new f_Halt(); }
-          | IN_IST      { $$ = new f_In(); }
-          | OUT_IST     { $$ = new f_Out($1); }
+statement:  LOAD_IST    { $$ =  f_Load($$); }
+          | ADD_IST     { $$ =  f_Add($2, $3); }
+          | SUB_IST     { $$ =  f_Sub($2, $3); }
+          | OR_IST      { $$ =  f_Or($2, $3); }
+          | XOR_IST     { $$ =  f_Xor($2, $3); }
+          | BRA_IST     { $$ =  f_Bra($2, $3); }
+          | BRAZ_IST    { $$ =  f_Braz($2, $3); }
+          | BRAL_IST    { $$ =  f_Bral($3); }
+          | BRALZ_IST   { $$ =  f_Bralz($2, $3); }
+          | CALL_IST    { $$ =  f_Call(); }
+          | HALT_IST    { $$ =  f_Halt(); }
+          | IN_IST      { $$ =  f_In(); }
+          | OUT_IST     { $$ =  f_Out($1); }
           ;
 %%                    /* C code */
 

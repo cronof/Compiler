@@ -52,7 +52,7 @@ char f_Call (char rb){
   PC = rb;
 }
 void f_Halt (){
-
+  exit;
 }
 void f_In (){
   RD = input;

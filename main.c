@@ -19,6 +19,8 @@ int main(void)
 			printf("Empty !!!!!!!!!!\n");
 			return 1;
 		}
+
+		/*
 		vtoken = yyparse();
 		switch (ntoken) {
 			case LOAD_IST:
@@ -43,9 +45,7 @@ int main(void)
 
 
 
-
-
-			/*case R2:
+case R2:
 			case RA:
 				if(vtoken != RB) {
 					printf("Syntax error in line %d, Expected an identifier but found %s\n", yylineno, yytext);
@@ -63,7 +63,7 @@ int main(void)
 		default:
 			printf("Syntax error in line %d\n",yylineno);
 		}
-		ntoken = yylex();
+		ntoken = yyparse();
 	}*/
 
 

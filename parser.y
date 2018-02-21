@@ -28,9 +28,6 @@ program: statements {  }
 statements:
           ;
 
-loop: '[' statements ']' { $$ = new Loop(*$2); }
-    ;
-
 statement: LOAD_IST		{ $$ = new f_Load($$); }
 				| ADD_IST			{ $$ = new f_Add($2, $3); }
 				| SUB_IST			{ $$ = new f_Sub($2, $3); }

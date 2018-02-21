@@ -20,6 +20,8 @@ int main(void)
 			return 1;
 		}
 
+
+		scanf("\n", );
 		/*
 		vtoken = yyparse();
 		switch (ntoken) {

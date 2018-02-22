@@ -1,5 +1,5 @@
 program: lexer.c register.h lex.yy.c
-	gcc main.c lex.yy.c -o program
+	g++ main.c lex.yy.c -o program
 
 
 lex.yy.c: lexer.l

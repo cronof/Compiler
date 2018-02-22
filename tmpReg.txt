@@ -42,3 +42,79 @@ statement:  LOAD_IST    { $$ =  f_Load($$); }
           | IN_IST      { $$ =  f_In(); }
           | OUT_IST     { $$ =  f_Out($1); }
           ;
+
+
+
+          //%token print
+          //%token exit_command
+          //%token <num> number
+          //%token <id> identifier
+          //%type <num> line exp term
+          //%type <id> assignment
+
+
+
+
+
+
+          ////////Instructions Fucntion/////////////
+
+          void f_Load (char r){
+            // RD = r;
+            printf("%X", LOAD_IST);
+          }
+          char f_Add (char ra, char rb){
+            //return RD = ra + rb;
+            printf("%X\n", ADD_IST);
+          }
+          char f_Sub (char ra, char rb){
+          //  RD = ra - rb;
+          //  return RD;
+            printf("%X\n", SUB_IST);
+          }
+          char f_Or (char ra, char rb){
+          //  RD = ra | rb;
+          //  return RD;
+            printf("%X\n", OR_IST);
+          }
+          char f_Xor (char ra, char rb){
+          //  RD = ra ^ rb;
+          //  return RD;
+            printf("%X\n", XOR_IST);
+          }
+          char f_Bra (char rb){
+          //  PC = rb;
+          //  return PC;
+            printf("%X\n", BRA_IST);
+          }
+          char f_Braz (char ra, char rb){
+          //  RD = ra | rb;
+          //  return RD;
+            printf("%X\n", BRAZ_IST);
+          }
+          char f_Bral (char rb){
+          //  PC = rb;
+          //  return PC;
+            printf("%X\n", BRAL_IST);
+          }
+          char f_Bralz (char ra, char rb){
+          //  if(r1 == 0)
+          //    return RD = rb;
+              printf("%X\n", );
+          }
+          char f_Call (char rb){
+          //  RD = PC;
+          //  PC = rb;
+            printf("%X\n", CALL_IST);
+          }
+          void f_Halt (){
+            printf("%X\n", HALT_IST);
+          }
+          void f_In (){
+            //RD = input;
+            printf("%X\n", IN_IST);
+          }
+          char f_Out (char ra){
+            //out = ra;
+            printf("%X\n", OUT_IST);
+          }

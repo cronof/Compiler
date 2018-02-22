@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "regAll.h"
 #include "parser.tab.h"
+#include "node.h"
 extern int yyparse();
 extern int yylineno;
 extern char* yytext;
@@ -10,7 +11,7 @@ extern char* yytext;
 int main(void)
 {
 
-	int ntoken, vtoken;
+	int ntoken;
 
 	ntoken = yyparse();
 	while(ntoken) {

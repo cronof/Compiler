@@ -20,8 +20,9 @@ int main(void)
 			return 1;
 		}
 
+		return 0;
+}
 
-		scanf("\n", );
 		/*
 		vtoken = yyparse();
 		switch (ntoken) {
@@ -67,10 +68,3 @@ case R2:
 		}
 		ntoken = yyparse();
 	}*/
-
-
-
-
-
-	return 0;
-}

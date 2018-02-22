@@ -3,6 +3,7 @@ void yyerror (char *s);
 #include <stdio.h>
 #include <stdlib.h>
 #include "regAll.h"
+#include "nodeAST.h"
 
 
 int symbols[52];
@@ -22,17 +23,17 @@ void updateSymbolVal(char symbol, int val);
 %start program
 
 %%
-program: statements {  }
+program: statements { }
        ;
 
-statements:
+statements: statement statements
           ;
 
-statement:  LOAD_IST    { $$ =  f_Load($$); }
-          | ADD_IST     { $$ =  f_Add($2, $3); }
-          | SUB_IST     { $$ =  f_Sub($2, $3); }
-          | OR_IST      { $$ =  f_Or($2, $3); }
-          | XOR_IST     { $$ =  f_Xor($2, $3); }
+statement:  LOAD_IST    { $$ =  f_Load(); }
+          | ADD_IST     { $$ =  f_Add(); }
+          | SUB_IST     { $$ =  f_Sub(); }
+          | OR_IST      { $$ =  f_Or(); }
+          | XOR_IST     { $$ =  f_Xor(); }
           | BRA_IST     { $$ =  f_Bra($2, $3); }
           | BRAZ_IST    { $$ =  f_Braz($2, $3); }
           | BRAL_IST    { $$ =  f_Bral($3); }
@@ -40,7 +41,7 @@ statement:  LOAD_IST    { $$ =  f_Load($$); }
           | CALL_IST    { $$ =  f_Call(); }
           | HALT_IST    { $$ =  f_Halt(); }
           | IN_IST      { $$ =  f_In(); }
-          | OUT_IST     { $$ =  f_Out($1); }
+          | OUT_IST     { $$ =  f_Out(); }
           ;
 %%                    /* C code */
 

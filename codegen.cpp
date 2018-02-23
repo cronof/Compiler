@@ -1,6 +1,7 @@
 #include "node.hpp"
 #include "codegen.hpp"
 #include "parser.hpp"
+#include "regAll.h"
 #include <iostream>
 #include <vector>
 #include <llvm/Value.h>

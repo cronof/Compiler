@@ -4,6 +4,7 @@
 #include <llvm/Value.h>
 
 class Statement;
+class CodeGenContext;
 
 typedef std::vector<Statement*> StatementList;
 

@@ -1,63 +1,26 @@
-#include "node.hpp"
-#include "codegen.hpp"
-#include "parser.hpp"
+//#include "node.h"
+//#include "parser.hpp"
 #include "regAll.h"
 #include <iostream>
 #include <vector>
-#include <llvm/Value.h>
-
+#include <stdio.h>
 
 using namespace std;
-class F_Load{
-    public:
-     cout << LOAD_IST << '\n';
-}
-class F_Add{
-    public:
-     cout << ADD_IST << '\n';
-}
-class F_Sub{
-    public:
-     cout << SUB_IST << '\n';
-}
+char F_Load(){  cout << LOAD_IST << '\n';}
+char F_Add(){   cout << ADD_IST << '\n';}
+char F_Sub(){   cout << SUB_IST << '\n';}
+char F_Or(){    cout << OR_IST << '\n';}
+char F_Xor(){   cout << XOR_IST << '\n';}
+char F_Bra(){   cout << BRA_IST << '\n';}
+char F_Braz(){  cout << BRAZ_IST << '\n';}
+char F_Bral(){  cout << BRAL_IST << '\n';}
+char F_Bralz(){ cout << BRALZ_IST << '\n';}
+char F_Call(){  cout << CALL_IST << '\n';}
+char F_Halt(){  cout << HALT_IST << '\n';}
+char F_In(){    cout << IN_IST << '\n';}
+char F_Out(){   cout << OUT_IST << '\n';}
 
-class F_Or{
-    public:
-     cout << OR_IST << '\n';
-}
-class F_Xor{
-    public:
-      cout << XOR_IST << '\n';
-}
-class F_Bra{
-    public:
-      cout << BRA_IST << '\n';
-}
-class F_Braz{
-    public:
-      cout << BRAZ_IST << '\n';
-}
-class F_Bral{
-    public:
-     cout << BRAL_IST << '\n';
-}
-class F_Bralz{
-    public:
-      cout << BRALZ_IST << '\n';
-}
-class F_Call{
-    public:
-    cout << CALL_IST << '\n';
-}
-class F_Halt{
-    public:
-      cout << HALT_IST << '\n';
-}
-class F_In{
-    public:
-      cout << IN_IST << '\n';
-}
-class F_Out{
-    public:
-      cout << OUT_IST << '\n';
+int main() {
+  F_Out();
+  return 0;
 }

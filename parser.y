@@ -23,28 +23,27 @@ void updateSymbolVal(char symbol, int val);
 %start program
 
 %%
-program: statements { }
+program: statements { programBlock = $1; }
        ;
 
-statements: statement statements
+statements: statement { $$ = new Block(); $$->statementList.push_back($<statement>1); }
+          | statements statement { $$->statementList.push_back($<statement>2); }
           ;
-
-statement:  LOAD_IST    { $$ =  new F_Load($$); }
-          | ADD_IST     { $$ =  new F_Add($2, $3); }
-          | SUB_IST     { $$ =  new F_Sub($2, $3); }
-          | OR_IST      { $$ =  new F_Or($2, $3); }
-          | XOR_IST     { $$ =  new F_Xor($2, $3); }
-          | BRA_IST     { $$ =  new F_Bra($2, $3); }
-          | BRAZ_IST    { $$ =  new F_Braz($2, $3); }
-          | BRAL_IST    { $$ =  new F_Bral($3); }
-          | BRALZ_IST   { $$ =  new F_Bralz($2, $3); }
-          | CALL_IST    { $$ =  new F_Call($$); }
-          | HALT_IST    { $$ =  new F_Halt(); }
-          | IN_IST      { $$ =  new F_In($$); }
-          | OUT_IST     { $$ =  new F_Out($$); }
+statement:  LOAD_IST    { $$ =  f_Load($$); }
+          | ADD_IST     { $$ =  f_Add($$, $$); }
+          | SUB_IST     { $$ =  f_Sub($$, $$); }
+          | OR_IST      { $$ =  f_Or($$, $$); }
+          | XOR_IST     { $$ =  f_Xor($$, $$); }
+          | BRA_IST     { $$ =  f_Bra($$, $$); }
+          | BRAZ_IST    { $$ =  f_Braz($$, $$); }
+          | BRAL_IST    { $$ =  f_Bral($$); }
+          | BRALZ_IST   { $$ =  f_Bralz($$, $$); }
+          | CALL_IST    { $$ =  f_Call($$); }
+          | HALT_IST    { $$ =  f_Halt(); }
+          | IN_IST      { $$ =  f_In($$); }
+          | OUT_IST     { $$ =  f_Out($$); }
           ;
-%%                    /* C code */
-
+%%
 
 int main (void) { return yyparse ( ); }
 

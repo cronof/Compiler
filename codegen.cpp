@@ -19,8 +19,3 @@ char F_Call(){  cout << CALL_IST << '\n';}
 char F_Halt(){  cout << HALT_IST << '\n';}
 char F_In(){    cout << IN_IST << '\n';}
 char F_Out(){   cout << OUT_IST << '\n';}
-
-int main() {
-  F_Out();
-  return 0;
-}

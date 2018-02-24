@@ -2,25 +2,25 @@
 #include "regAll.h"
 #include "parser.tab.h"
 #include "node.h"
+#include <iostream>
+using namespace std;
 extern int yyparse();
 extern int yylineno;
 extern char* yytext;
 
 //char *instructions[] = {NULL, "LOAD", "ADD", "SUB", "OR", "XOR", "BRA","BRAZ", "BRAL", "BRALZ", "CALL", "HALT", "IN", "OUT"};
 
-int main(void)
+
+int main()
 {
-
 	int ntoken;
-
 	ntoken = yyparse();
 	while(ntoken) {
-		printf("%d\n", ntoken);
+		cout<< ntoken << '\n';
 		if(yyparse() == NULL) {
-			printf("Empty !!!!!!!!!!\n");
+			cout<<"Empty !!!!!!!!!!"<<'\n';
 			return 1;
 		}
-
 		return 0;
 }
 

@@ -9,8 +9,8 @@ typedef std::vector<Statement*> StatementList;
 class Node
 {
   public:
-    virtual ~Node() {}
-    virtual llvm::Value *codeGen(CodeGenContext &context) {}
+    int ~Node() {}
+    int *codeGen(CodeGenContext &context) {}
 };
 
 class Statement : public Node {};
@@ -20,8 +20,5 @@ class Block : public Statement
   public:
     StatementList statementList;
     Block() {}
-    virtual llvm::Value *codeGen(CodeGenContext &context);
+    int *codeGen(CodeGenContext &context);
 };
-
-
-change

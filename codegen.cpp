@@ -1,5 +1,5 @@
-//#include "node.h"
-//#include "parser.hpp"
+#include "node.h"
+#include "parser.hpp"
 #include "regAll.h"
 #include <iostream>
 #include <vector>

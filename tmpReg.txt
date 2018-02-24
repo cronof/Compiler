@@ -132,3 +132,5 @@ statement:  LOAD_IST    { $$ =  new F_Load($$); }
             //out = ra;
             printf("%X\n", OUT_IST);
           }
+
+          //char *instructions[] = {NULL, "LOAD", "ADD", "SUB", "OR", "XOR", "BRA","BRAZ", "BRAL", "BRALZ", "CALL", "HALT", "IN", "OUT"};

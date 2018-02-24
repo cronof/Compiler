@@ -1,5 +1,5 @@
 #include "node.h"
-#include "parser.hpp"
+#include "parser.tab.h"
 #include "regAll.h"
 #include <iostream>
 #include <vector>

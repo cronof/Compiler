@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include "regAll.h"
+#include "regAll.hpp"
 #include "parser.tab.h"
-#include "node.h"
+#include "node.hpp"
 #include <iostream>
 using namespace std;
 extern int yyparse();

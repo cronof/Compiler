@@ -39,7 +39,7 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     LOAD_IST = 258,
+     load_ist = 258,
      ADD_IST = 259,
      SUB_IST = 260,
      OR_IST = 261,
@@ -51,7 +51,8 @@
      CALL_IST = 267,
      HALT_IST = 268,
      IN_IST = 269,
-     OUT_IST = 270
+     OUT_IST = 270,
+     nValue = 271
    };
 #endif
 
@@ -62,7 +63,7 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 15 "parser.y"
+#line 17 "parser.y"
 
     Block *block;
     Statement *statement;
@@ -70,7 +71,7 @@ typedef union YYSTYPE
 
 
 /* Line 1676 of yacc.c  */
-#line 74 "parser.tab.h"
+#line 75 "parser.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

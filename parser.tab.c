@@ -73,17 +73,19 @@
 void yyerror (char *s);
 #include <stdio.h>
 #include <stdlib.h>
-#include "regAll.h"
-#include "node.h"
+#include "regAll.hpp"
+#include "node.hpp"
+#include <cstdio>
+#include <cstdlib>
 
+Block *programBlock;
 
-int symbols[52];
-int symbolVal(char symbol);
-void updateSymbolVal(char symbol, int val);
+extern int yylex();
+
 
 
 /* Line 189 of yacc.c  */
-#line 87 "parser.tab.c"
+#line 89 "parser.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -110,7 +112,7 @@ void updateSymbolVal(char symbol, int val);
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     LOAD_IST = 258,
+     load_ist = 258,
      ADD_IST = 259,
      SUB_IST = 260,
      OR_IST = 261,
@@ -122,7 +124,8 @@ void updateSymbolVal(char symbol, int val);
      CALL_IST = 267,
      HALT_IST = 268,
      IN_IST = 269,
-     OUT_IST = 270
+     OUT_IST = 270,
+     nValue = 271
    };
 #endif
 
@@ -133,7 +136,7 @@ typedef union YYSTYPE
 {
 
 /* Line 214 of yacc.c  */
-#line 15 "parser.y"
+#line 17 "parser.y"
 
     Block *block;
     Statement *statement;
@@ -141,7 +144,7 @@ typedef union YYSTYPE
 
 
 /* Line 214 of yacc.c  */
-#line 145 "parser.tab.c"
+#line 148 "parser.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -153,7 +156,7 @@ typedef union YYSTYPE
 
 
 /* Line 264 of yacc.c  */
-#line 157 "parser.tab.c"
+#line 160 "parser.tab.c"
 
 #ifdef short
 # undef short
@@ -371,7 +374,7 @@ union yyalloc
 #define YYLAST   14
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  16
+#define YYNTOKENS  17
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  4
 /* YYNRULES -- Number of rules.  */
@@ -381,7 +384,7 @@ union yyalloc
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   270
+#define YYMAXUTOK   271
 
 #define YYTRANSLATE(YYX)						\
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -416,7 +419,7 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15
+      15,    16
 };
 
 #if YYDEBUG
@@ -431,7 +434,7 @@ static const yytype_uint8 yyprhs[] =
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-      17,     0,    -1,    18,    -1,    19,    -1,    18,    19,    -1,
+      18,     0,    -1,    19,    -1,    20,    -1,    19,    20,    -1,
        3,    -1,     4,    -1,     5,    -1,     6,    -1,     7,    -1,
        8,    -1,     9,    -1,    10,    -1,    11,    -1,    12,    -1,
       13,    -1,    14,    -1,    15,    -1
@@ -440,8 +443,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    26,    26,    29,    30,    32,    33,    34,    35,    36,
-      37,    38,    39,    40,    41,    42,    43,    44
+       0,    29,    29,    32,    33,    35,    36,    37,    38,    39,
+      40,    41,    42,    43,    44,    45,    46,    47
 };
 #endif
 
@@ -450,10 +453,10 @@ static const yytype_uint8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "LOAD_IST", "ADD_IST", "SUB_IST",
+  "$end", "error", "$undefined", "load_ist", "ADD_IST", "SUB_IST",
   "OR_IST", "XOR_IST", "BRA_IST", "BRAZ_IST", "BRAL_IST", "BRALZ_IST",
-  "CALL_IST", "HALT_IST", "IN_IST", "OUT_IST", "$accept", "program",
-  "statements", "statement", 0
+  "CALL_IST", "HALT_IST", "IN_IST", "OUT_IST", "nValue", "$accept",
+  "program", "statements", "statement", 0
 };
 #endif
 
@@ -463,15 +466,15 @@ static const char *const yytname[] =
 static const yytype_uint16 yytoknum[] =
 {
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
-     265,   266,   267,   268,   269,   270
+     265,   266,   267,   268,   269,   270,   271
 };
 # endif
 
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    16,    17,    18,    18,    19,    19,    19,    19,    19,
-      19,    19,    19,    19,    19,    19,    19,    19
+       0,    17,    18,    19,    19,    20,    20,    20,    20,    20,
+      20,    20,    20,    20,    20,    20,    20,    20
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
@@ -533,7 +536,7 @@ static const yytype_uint8 yycheck[] =
 static const yytype_uint8 yystos[] =
 {
        0,     3,     4,     5,     6,     7,     8,     9,    10,    11,
-      12,    13,    14,    15,    17,    18,    19,     0,    19
+      12,    13,    14,    15,    18,    19,    20,     0,    20
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1347,119 +1350,119 @@ yyreduce:
         case 2:
 
 /* Line 1455 of yacc.c  */
-#line 26 "parser.y"
+#line 29 "parser.y"
     { programBlock = (yyvsp[(1) - (1)].block); ;}
     break;
 
   case 3:
 
 /* Line 1455 of yacc.c  */
-#line 29 "parser.y"
+#line 32 "parser.y"
     { (yyval.block) = new Block(); (yyval.block)->statementList.push_back((yyvsp[(1) - (1)].statement)); ;}
     break;
 
   case 4:
 
 /* Line 1455 of yacc.c  */
-#line 30 "parser.y"
+#line 33 "parser.y"
     { (yyval.block)->statementList.push_back((yyvsp[(2) - (2)].statement)); ;}
     break;
 
   case 5:
 
 /* Line 1455 of yacc.c  */
-#line 32 "parser.y"
+#line 35 "parser.y"
     { (yyval.statement) =  f_Load((yyval.statement)); ;}
     break;
 
   case 6:
 
 /* Line 1455 of yacc.c  */
-#line 33 "parser.y"
+#line 36 "parser.y"
     { (yyval.statement) =  f_Add((yyval.statement), (yyval.statement)); ;}
     break;
 
   case 7:
 
 /* Line 1455 of yacc.c  */
-#line 34 "parser.y"
+#line 37 "parser.y"
     { (yyval.statement) =  f_Sub((yyval.statement), (yyval.statement)); ;}
     break;
 
   case 8:
 
 /* Line 1455 of yacc.c  */
-#line 35 "parser.y"
+#line 38 "parser.y"
     { (yyval.statement) =  f_Or((yyval.statement), (yyval.statement)); ;}
     break;
 
   case 9:
 
 /* Line 1455 of yacc.c  */
-#line 36 "parser.y"
+#line 39 "parser.y"
     { (yyval.statement) =  f_Xor((yyval.statement), (yyval.statement)); ;}
     break;
 
   case 10:
 
 /* Line 1455 of yacc.c  */
-#line 37 "parser.y"
+#line 40 "parser.y"
     { (yyval.statement) =  f_Bra((yyval.statement), (yyval.statement)); ;}
     break;
 
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 38 "parser.y"
+#line 41 "parser.y"
     { (yyval.statement) =  f_Braz((yyval.statement), (yyval.statement)); ;}
     break;
 
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 39 "parser.y"
+#line 42 "parser.y"
     { (yyval.statement) =  f_Bral((yyval.statement)); ;}
     break;
 
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 40 "parser.y"
+#line 43 "parser.y"
     { (yyval.statement) =  f_Bralz((yyval.statement), (yyval.statement)); ;}
     break;
 
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 41 "parser.y"
+#line 44 "parser.y"
     { (yyval.statement) =  f_Call((yyval.statement)); ;}
     break;
 
   case 15:
 
 /* Line 1455 of yacc.c  */
-#line 42 "parser.y"
+#line 45 "parser.y"
     { (yyval.statement) =  f_Halt(); ;}
     break;
 
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 43 "parser.y"
+#line 46 "parser.y"
     { (yyval.statement) =  f_In((yyval.statement)); ;}
     break;
 
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 44 "parser.y"
+#line 47 "parser.y"
     { (yyval.statement) =  f_Out((yyval.statement)); ;}
     break;
 
 
 
 /* Line 1455 of yacc.c  */
-#line 1463 "parser.tab.c"
+#line 1466 "parser.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1671,7 +1674,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 46 "parser.y"
+#line 49 "parser.y"
 
 
 int main (void) { return yyparse ( ); }

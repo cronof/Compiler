@@ -380,7 +380,7 @@ char *yytext;
 #line 1 "lexer.l"
 #define INITIAL 0
 #line 2 "lexer.l"
-	#include "regAll.h"
+	#include "regAll.hpp"
 	#include "parser.tab.h"
 #line 386 "lex.yy.c"
 
@@ -622,7 +622,7 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 8 "lexer.l"
-{ return LOAD_IST; }
+{ return load_ist; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
@@ -1583,7 +1583,4 @@ int main()
 #line 22 "lexer.l"
 
 
-int yywrap(void)
-{
-	return 1;
-}
+int yywrap(void) { return 1; }

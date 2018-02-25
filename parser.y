@@ -2,13 +2,15 @@
 void yyerror (char *s);
 #include <stdio.h>
 #include <stdlib.h>
-#include "regAll.h"
-#include "node.h"
+#include "regAll.hpp"
+#include "node.hpp"
+#include <cstdio>
+#include <cstdlib>
 
+Block *programBlock;
 
-int symbols[52];
-int symbolVal(char symbol);
-void updateSymbolVal(char symbol, int val);
+extern int yylex();
+
 %}
 
 %union
@@ -16,10 +18,11 @@ void updateSymbolVal(char symbol, int val);
     Block *block;
     Statement *statement;
 }
-
-%token LOAD_IST ADD_IST SUB_IST OR_IST XOR_IST BRA_IST BRAZ_IST BRAL_IST BRALZ_IST CALL_IST HALT_IST IN_IST OUT_IST
 %type <block> statements
 %type <statement> statement
+%token LOAD_IST ADD_IST SUB_IST OR_IST XOR_IST BRA_IST BRAZ_IST BRAL_IST BRALZ_IST CALL_IST HALT_IST IN_IST OUT_IST
+%token nValue
+
 %start program
 
 %%

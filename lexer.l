@@ -1,5 +1,5 @@
 %{
-	#include "regAll.h"
+	#include "regAll.hpp"
 	#include "parser.tab.h"
 %}
 
@@ -21,7 +21,4 @@
 .              printf("unexpected character\n");
 %%
 
-int yywrap(void)
-{
-	return 1;
-}
+int yywrap(void) { return 1; }

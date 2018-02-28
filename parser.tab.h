@@ -51,7 +51,11 @@
      CALL_IST = 267,
      HALT_IST = 268,
      IN_IST = 269,
-     OUT_IST = 270
+     OUT_IST = 270,
+     REG_PC = 271,
+     s_execute = 272,
+     s_nostore = 273,
+     REG = 274
    };
 #endif
 
@@ -70,7 +74,7 @@ typedef union YYSTYPE
 
 
 /* Line 1676 of yacc.c  */
-#line 74 "parser.tab.h"
+#line 78 "parser.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

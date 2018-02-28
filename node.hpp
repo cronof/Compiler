@@ -1,4 +1,4 @@
-#include "regAll.hpp"
+// #include "regAll.hpp"
 #include <iostream>
 #include <vector>
 
@@ -10,7 +10,7 @@ class Node
 {
   public:
     virtual ~Node() {}
-    virtual int *codeGen() {}
+    virtual int *codeGen(CodeGenContext &context) {}
 };
 
 class Statement : public Node {};
@@ -20,5 +20,5 @@ class Block : public Statement
   public:
     StatementList statementList;
     Block() {}
-    virtual int *codeGen();
+    virtual int *codeGen(CodeGenContext &context);
 };

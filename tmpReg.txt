@@ -57,6 +57,20 @@ statement:  LOAD_IST    { $$ =  new F_Load($$); }
           | OUT_IST     { $$ =  new F_Out($$); }
           ;
           %%
+          statement:  LOAD_IST  REG                    { $$ =  f_Load($1); }
+                    | ADD_IST   REG REG                { $$ =  f_Add($1, $2); }
+                    | SUB_IST   REG REG                { $$ =  f_Sub($1, $2); }
+                    | OR_IST    REG REG                { $$ =  f_Or($1, $2); }
+                    | XOR_IST   REG REG                { $$ =  f_Xor($1, $2); }
+                    | BRA_IST   REG s_nostore          { $$ =  f_Bra($1, $2); }
+                    | BRAZ_IST  REG s_nostore          { $$ =  f_Braz($1, $2); }
+                    | BRAL_IST  REG s_nostore          { $$ =  f_Bral($1); }
+                    | BRALZ_IST REG s_nostore          { $$ =  f_Bralz($1, $2); }
+                    | CALL_IST  REG_PC REG             { $$ =  f_Call($1, $2); }
+                    | HALT_IST  s_execute              { $$ =  f_Halt($1); }
+                    | IN_IST                           { $$ =  f_In(); }
+                    | OUT_IST   REG                    { $$ =  f_Out($1); }
+                    ;
 
 
           //%token print
@@ -140,6 +154,9 @@ statement:  LOAD_IST    { $$ =  new F_Load($$); }
           char W; //8-bit Accumulator
           char IR; //8-bit Instruction Register
           //4bit ---half of char
+          char RA;
+          char RB;
+          char RD;
 
           #define LOAD_IST 0x01
           #define ADD_IST 0x04

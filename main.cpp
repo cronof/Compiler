@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "regAll.hpp"
+// #include "regAll.hpp"
 #include "parser.tab.h"
 #include "node.hpp"
 #include <iostream>

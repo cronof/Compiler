@@ -5,11 +5,16 @@
 #include <fstream>
 #include <vector>
 #include <stdio.h>
-extern "Cpp" Statement, CodeGenContext;
+//#include "codegen.hpp"
+//#include "parser.hpp"
+//extern "C" Statement, CodeGenContext;
+
 using namespace std;
-char F_Load(statement s){
+
+
+char F_Load(){
   cout << LOAD_IST << '\n';
-  cout << "Regisetr: "<< s << endl;
+  cout << "Regisetr: "<< endl;
 }/*
 char F_Add(statement s1, statement s2){
   cout << ADD_IST << '\n';

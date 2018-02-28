@@ -33,27 +33,6 @@
    version 2.2 of Bison.  */
 
 
-/* Tokens.  */
-#ifndef YYTOKENTYPE
-# define YYTOKENTYPE
-   /* Put the tokens into the symbol table, so that GDB and other debuggers
-      know about them.  */
-   enum yytokentype {
-     LOAD_IST = 258,
-     ADD_IST = 259,
-     SUB_IST = 260,
-     OR_IST = 261,
-     XOR_IST = 262,
-     BRA_IST = 263,
-     BRAZ_IST = 264,
-     BRAL_IST = 265,
-     BRALZ_IST = 266,
-     CALL_IST = 267,
-     HALT_IST = 268,
-     IN_IST = 269,
-     OUT_IST = 270
-   };
-#endif
 
 
 
@@ -62,15 +41,17 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 19 "parser.y"
+#line 14 "parser.y"
 
     Block *block;
     Statement *statement;
+    Loop *loop;
+    int token;
 
 
 
 /* Line 1676 of yacc.c  */
-#line 74 "parser.tab.h"
+#line 55 "parser.hpp"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

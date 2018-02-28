@@ -2,26 +2,30 @@
 void yyerror (char *s);
 #include <stdio.h>
 #include <stdlib.h>
-#include "regAll.hpp"
-#include "node.hpp"
 #include <cstdio>
 #include <cstdlib>
+#include "regAll.hpp"
+#include "node.hpp"
 
 Block *programBlock;
 
 extern int yylex();
-
+extern int yyparse();
+void yyerror(const char *s) { printf("Error: %s\n", s);  }
 %}
+
 
 %union
 {
     Block *block;
     Statement *statement;
 }
+
+
 %type <block> statements
 %type <statement> statement
 %token LOAD_IST ADD_IST SUB_IST OR_IST XOR_IST BRA_IST BRAZ_IST BRAL_IST BRALZ_IST CALL_IST HALT_IST IN_IST OUT_IST
-%token nValue
+
 
 %start program
 
@@ -47,7 +51,3 @@ statement:  LOAD_IST    { $$ =  f_Load($$); }
           | OUT_IST     { $$ =  f_Out($$); }
           ;
 %%
-
-int main (void) { return yyparse ( ); }
-
-void yyerror (char *s) {fprintf (stderr, "%s\n", s);}

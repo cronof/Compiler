@@ -10,7 +10,7 @@ class Node
 {
   public:
     virtual ~Node() {}
-    virtual int *codeGen(CodeGenContext &context) {}
+    virtual int *codeGen() {}
 };
 
 class Statement : public Node {};
@@ -20,5 +20,5 @@ class Block : public Statement
   public:
     StatementList statementList;
     Block() {}
-    virtual int *codeGen(CodeGenContext &context);
+    virtual int *codeGen();
 };

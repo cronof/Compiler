@@ -622,7 +622,7 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 8 "lexer.l"
-{ return load_ist; }
+{ return LOAD_IST; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP

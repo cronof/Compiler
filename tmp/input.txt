@@ -1,7 +1,73 @@
-
-LOAD RA 5
-LOAD RB 7
-
-ADD RD RA RB
-OUT RD
+1. Add
+LOAD R0, 5
+LOAD R1, 7
+CALCULATE:
+ADD R0, R1, R1
+OUT R1
+HALT
+================12===============
+2. Sub
+LOAD R0, 9
+LOAD R1, 5
+CALCULATE:
+SUB R0, R1, R1
+OUT R1
+HALT
+===============4=================
+3. OR
+LOAD R0, 0
+LOAD R1, 0
+CALCULATE:
+OR R0, R1, R1
+OUT R1
+HALT
+==============0====================
+4. XOR
+LOAD R0, 0
+LOAD R1, 0
+CALCULATE:
+XOR R0, R1, R1
+OUT R1
+HALT
+-------------0---------------
+LOAD R0, 0
+LOAD R1, 1
+CALCULATE:
+OR R0, R1, R1
+OUT R1
+HALT
+---------------1--------------
+LOAD R0, 1
+LOAD R1, 1
+CALCULATE:
+XOR R0, R1, R1
+OUT R1
+HALT
+--------------0---------------
+5. CALL
+LOAD R0, #5
+LOAD R1, #7
+CALLZ 0, UNSIGNED_MULTIPLY, R15
+OUT R2
+HALT
+UNSIGNED_MULTIPLY:
+LOAD R2, #0
+LOAD R14, #1
+MULTIPLY_LOOP:
+ADD R0, R2, R2
+SUB R1, R14, R1
+BRALZ R1, MULTIPLY_LOOP
+BRAL R2, 0
+BRA R15
+======================15=====================
+###Add 1 to 10 -> 55  Example calculate
+LOAD R0, 10
+LOAD R1, 0
+LOAD R2, 1
+CALCULATE:
+ADD R0, R1, R1
+SUB R0, R2, R0
+BRALZ PC ? R1; if R[R0] is zero
+BRAL PC ? R1
+OUT R1
 HALT
